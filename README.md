@@ -1,8 +1,6 @@
 # WebexXmlApi
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/webex_xml_api`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+The WebexXmlApi gem provides an interface to the Cisco WebEx Service for creating, scheduling and administering the Meetings. This gem is featuring a subset of an entire WebEx interface using the XML format.
 
 ## Installation
 
@@ -12,13 +10,29 @@ Add this line to your application's Gemfile:
 gem 'webex_xml_api'
 ```
 
-And then execute:
+WebexXmlApi is cryptographically signed. To be sure the gem you install hasn’t been tampered with:
 
+Add my public key (if you haven’t already) as a trusted certificate:
+
+```ruby
+gem cert --add <(curl -Ls https://raw.github.com/erolms/webex_xml_api/master/certs/erolms.pem)
+```
+
+The MediumSecurity trust profile will verify signed gems, but allow the installation of unsigned dependencies.
+
+This is necessary because not all of WebexXmlApi’s dependencies are signed, so we cannot use HighSecurity.
+
+Execute:
+
+```ruby
     $ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install webex_xml_api
+```ruby
+    $ gem install webex_xml_api -P MediumSecurity
+```
 
 ## Usage
 
@@ -32,10 +46,13 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/webex_xml_api.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/erolms/webex_xml_api.
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
+## Copyrights
+
+WebEx is a Trademark of the [Cisco](https://www.cisco.com/) Corporation.
 
