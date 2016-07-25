@@ -1,5 +1,3 @@
-require "webex_xml_api/version"
-
-module WebexXmlApi
-  # Your code goes here...
-end
+require 'webex_xml_api/exceptions'
+require 'webex_xml_api/security_context'
+require 'webex_xml_api/version'
