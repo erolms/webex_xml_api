@@ -6,6 +6,7 @@ describe WebexXmlApi::Common do
 
     describe '#underscore' do
       subject { class_with_inclusion.new }
+
       it 'returns unchanged string' do
         expect(subject.underscore('unchanged')).to eql('unchanged')
       end

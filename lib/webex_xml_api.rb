@@ -1,4 +1,5 @@
 require 'webex_xml_api/common'
 require 'webex_xml_api/exceptions'
 require 'webex_xml_api/security_context'
+require 'webex_xml_api/user/get_user'
 require 'webex_xml_api/version'

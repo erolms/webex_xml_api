@@ -17,12 +17,13 @@ module WebexXmlApi
     PARAMETER_MAPPING.each_key { |k| attr_accessor k }
 
     def initialize(attributes = {})
-       attributes.each_pair do |k, v|
-         send("#{k}=", v) if PARAMETER_MAPPING.has_key?(k)
-       end
+      attributes.each_pair do |k, v|
+        send("#{k}=", v) if PARAMETER_MAPPING.has_key?(k)
+      end
     end
 
     def to_xml
+      raise WebexXmlApi::NotEnoughArguments, 'SecurityContext' unless valid?
       builder = Nokogiri::XML::Builder.new(:encoding => 'UTF-8') do |xml|
         xml.header do
           xml.securityContext do

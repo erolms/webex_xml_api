@@ -19,9 +19,19 @@ describe WebexXmlApi::SecurityContext do
   end
 
   describe '#to_xml' do
-    it 'returns formatted XML text' do
-      expected = "<header>\n  <securityContext>\n    <siteName>test</siteName>\n  </securityContext>\n</header>\n"
+    it 'raises a NotEnoughArguments exception if arguments missing' do
       sc = subject.new(site_name: 'test')
+      expect { sc.to_xml }.
+        to raise_error(WebexXmlApi::NotEnoughArguments, 'SecurityContext')
+    end
+
+    it 'returns formatted XML text' do
+      expected = "<header>\n  <securityContext>\n"
+      expected += "    <webExID>test</webExID>\n"
+      expected += "    <password>test</password>\n"
+      expected += "    <siteName>test</siteName>\n"
+      expected += "  </securityContext>\n</header>\n"
+      sc = subject.new(site_name: 'test', webex_id: 'test', password: 'test')
       expect(sc.to_xml).to eql(expected)
     end
   end
@@ -32,7 +42,7 @@ describe WebexXmlApi::SecurityContext do
       expect(sc.valid?).to be_falsey
     end
 
-    it 'failes if webex_id is missing' do
+    it 'fails if webex_id is missing' do
       sc = subject.new(site_name: 'test', session_ticket: 'test')
       expect(sc.valid?).to be_falsey
     end
