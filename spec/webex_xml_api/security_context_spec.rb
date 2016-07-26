@@ -25,4 +25,26 @@ describe WebexXmlApi::SecurityContext do
       expect(sc.to_xml).to eql(expected)
     end
   end
+
+  describe '#valid?' do
+    it 'fails if site_name is missing' do
+      sc = subject.new(webex_id: 'test', password: 'test')
+      expect(sc.valid?).to be_falsey
+    end
+
+    it 'failes if webex_id is missing' do
+      sc = subject.new(site_name: 'test', session_ticket: 'test')
+      expect(sc.valid?).to be_falsey
+    end
+
+    it 'fails if password or session_ticket are missing' do
+      sc = subject.new(site_name: 'test', webex_id: 'test')
+      expect(sc.valid?).to be_falsey
+    end
+
+    it 'succeeds if all required parameters are set' do
+      sc = subject.new(site_name: 'test', webex_id: 'test', password: 'test')
+      expect(sc.valid?).to be_truthy
+    end
+  end
 end

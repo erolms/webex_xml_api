@@ -1,8 +1,8 @@
 # WebexXmlApi
 
-The WebexXmlApi gem provides an interface to the Cisco WebEx Service for creating, scheduling and administering the Meetings. This gem is featuring a subset of an entire WebEx interface using the XML format.
-
 [![Build Status](https://travis-ci.org/erolms/webex_xml_api.svg?branch=master)](https://travis-ci.org/erolms/webex_xml_api)
+
+The WebexXmlApi gem provides an interface to the Cisco WebEx Service for creating, scheduling and administering the Meetings. This gem is featuring a subset of an entire WebEx interface using the XML format.
 
 ## Installation
 

@@ -2,8 +2,6 @@ require 'nokogiri'
 
 module WebexXmlApi
   class SecurityContext
-    include WebexXmlApi::Common
-
     PARAMETER_MAPPING = {
       :webex_id => 'webExID',
       :password => 'password',
@@ -35,6 +33,12 @@ module WebexXmlApi
         end
       end
       builder.to_xml.gsub("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", '')
+    end
+
+    def valid?(context = self)
+      return false if context.site_name.nil? || context.webex_id.nil?
+      return false if context.password.nil? && context.session_ticket.nil?
+      true
     end
   end
 end
