@@ -20,5 +20,14 @@ describe WebexXmlApi::Common do
         expect(subject.underscore('Webex-Xml-Api')).to eql('webex_xml_api')
       end
     end
+
+    describe '#xml_service_url' do
+      subject { class_with_inclusion.new }
+
+      it 'returns WebEx XML Service URL' do
+        expect(subject.xml_service_url('testsite')).
+          to eql('https://testsite.webex.com/WBXService/XMLService')
+      end
+    end
   end
 end

@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+Date: Tue, 26 Jul 2016 19:42:30 GMT
+Server: 
+Pragma: no-cache
+Cache-Control: no-cache
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Content-Type: text/xml;charset=UTF-8
+Strict-Transport-Security: max-age=31536000; includeSubDomains;preload
+Transfer-Encoding: chunked
+
+<?xml version="1.0" encoding="UTF-8"?>
+<serv:message xmlns:serv="http://www.webex.com/schemas/2002/06/service" xmlns:com="http://www.webex.com/schemas/2002/06/common" xmlns:use="http://www.webex.com/schemas/2002/06/service/user"><serv:header><serv:response><serv:result>FAILURE</serv:result><serv:reason>Not a valid session ticket</serv:reason><serv:gsbStatus>PRIMARY</serv:gsbStatus><serv:exceptionID>030047</serv:exceptionID></serv:response></serv:header><serv:body><serv:bodyContent/></serv:body></serv:message>

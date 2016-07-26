@@ -7,7 +7,7 @@ module WebexXmlApi
 
       REQUEST_TYPE = 'java:com.webex.service.binding.user.GetUser'.freeze
       PARAMETER_MAPPING = {
-        :webex_id => 'webExID'
+        :webex_id => 'webExId'
       }
 
       attr_accessor :webex_id, :security_context
@@ -36,12 +36,38 @@ module WebexXmlApi
             end
           end
         end
-        builder.doc.to_xml
+        builder.to_xml
       end
 
       def valid?(context = self)
         return false if context.webex_id.nil?
         true
+      end
+
+      def send_request
+        raise WebexXmlApi::NotEnoughArguments, 'User::GetUser' unless valid?
+        raise WebexXmlApi::NotEnoughArguments,
+              'SecurityContext' unless security_context.valid?
+        @request = to_xml
+        @response = HTTParty.post(xml_service_url(security_context.site_name),
+                                  :body => @request,
+                                  :headers => {
+                                    'Content-Type' => 'application/xml'
+                                  })
+        resp_status, err_code, err_text  = check_response_code(@response)
+        raise WebexXmlApi::RequestFailed.new(@response),
+          "Error #{err_code}: #{err_text}" if resp_status == 'FAILURE'
+        @response.parsed_response["message"]["body"]["bodyContent"]
+      end
+
+      private
+
+      def check_response_code(resp)
+        status = resp.parsed_response["message"]["header"]["response"]["result"]
+        return status, nil, nil if status == 'SUCCESS'
+        c = resp.parsed_response["message"]["header"]["response"]["exceptionID"]
+        t = resp.parsed_response["message"]["header"]["response"]["reason"]
+        return status, c, t
       end
     end
   end

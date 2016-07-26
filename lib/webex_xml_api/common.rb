@@ -10,5 +10,9 @@ module WebexXmlApi
       word.downcase!
       word
     end
+
+    def xml_service_url(site_name)
+      "https://#{site_name}.webex.com/WBXService/XMLService".freeze
+    end
   end
 end

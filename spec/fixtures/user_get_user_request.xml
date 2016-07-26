@@ -6,4 +6,4 @@
     <siteName>test</siteName>
   </securityContext>
 </header>
-<body><bodyContent xsi:type="java:com.webex.service.binding.user.GetUser"><webExID>123456</webExID></bodyContent></body></message>
+<body><bodyContent xsi:type="java:com.webex.service.binding.user.GetUser"><webExId>123456</webExId></bodyContent></body></message>
