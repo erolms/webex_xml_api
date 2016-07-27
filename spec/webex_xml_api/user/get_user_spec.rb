@@ -20,8 +20,8 @@ describe WebexXmlApi::User::GetUser do
   describe '#to_xml' do
     it 'raises a NotEnoughArguments exception if arguments missing' do
       gu = subject.new(site_name: 'test')
-      expect { gu.to_xml }.
-        to raise_error(WebexXmlApi::NotEnoughArguments, 'User::GetUser')
+      expect { gu.to_xml }
+        .to raise_error(WebexXmlApi::NotEnoughArguments, 'User::GetUser')
     end
 
     it 'returns formatted XML text' do
@@ -46,37 +46,37 @@ describe WebexXmlApi::User::GetUser do
   describe '#send_request' do
     it 'raises a NotEnoughArguments exception for GetUser' do
       gu = subject.new(site_name: 'test')
-      expect { gu.send_request }.
-        to raise_error(WebexXmlApi::NotEnoughArguments, 'User::GetUser')
+      expect { gu.send_request }
+        .to raise_error(WebexXmlApi::NotEnoughArguments, 'User::GetUser')
     end
 
     it 'raises a NotEnoughArguments exception for SecurityContext' do
       gu = subject.new(site_name: 'test', webex_id: 'test')
-      expect { gu.send_request }.
-        to raise_error(WebexXmlApi::NotEnoughArguments, 'SecurityContext')
+      expect { gu.send_request }
+        .to raise_error(WebexXmlApi::NotEnoughArguments, 'SecurityContext')
     end
 
     it 'raises a RequestFailed exception with error message' do
       gu = subject.new(site_name: 'test', webex_id: 'test', password: 'test')
       bad_reply = file_fixture('user_get_user_response_bad.xml')
-      stub_request(:post, 'https://test.webex.com/WBXService/XMLService').
-        to_return(bad_reply)
-      expect { gu.send_request }.
-        to raise_error { |error|
-          expect(error.message).
-            to eql('Error 030047: Not a valid session ticket')
+      stub_request(:post, 'https://test.webex.com/WBXService/XMLService')
+        .to_return(bad_reply)
+      expect { gu.send_request }
+        .to raise_error { |error|
+          expect(error.message)
+            .to eql('Error 030047: Not a valid session ticket')
         }
     end
 
     it 'returns Request bodyContent as hash' do
       gu = subject.new(site_name: 'test', webex_id: 'test', password: 'test')
       good_reply = file_fixture('user_get_user_response_good.xml')
-      stub_request(:post, 'https://test.webex.com/WBXService/XMLService').
-        to_return(good_reply)
+      stub_request(:post, 'https://test.webex.com/WBXService/XMLService')
+        .to_return(good_reply)
       ret = gu.send_request
       expect(ret).to be
-      expect(ret.has_key?('firstName')).to be_truthy
-      expect(ret["webExId"]).to eql('123456')
+      expect(ret.key?('firstName')).to be_truthy
+      expect(ret['webExId']).to eql('123456')
     end
   end
 end

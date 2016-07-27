@@ -21,8 +21,8 @@ describe WebexXmlApi::SecurityContext do
   describe '#to_xml' do
     it 'raises a NotEnoughArguments exception if arguments missing' do
       sc = subject.new(site_name: 'test')
-      expect { sc.to_xml }.
-        to raise_error(WebexXmlApi::NotEnoughArguments, 'SecurityContext')
+      expect { sc.to_xml }
+        .to raise_error(WebexXmlApi::NotEnoughArguments, 'SecurityContext')
     end
 
     it 'returns formatted XML text' do

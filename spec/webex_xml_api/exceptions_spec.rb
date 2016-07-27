@@ -10,8 +10,8 @@ describe WebexXmlApi::Error do
 
   describe 'raises an error' do
     it 'with message' do
-      expect { raise WebexXmlApi::Error, 'this message exactly'}.
-        to raise_error('this message exactly')
+      expect { raise WebexXmlApi::Error, 'this message exactly' }
+        .to raise_error('this message exactly')
     end
   end
 
@@ -23,8 +23,8 @@ describe WebexXmlApi::Error do
 
     describe 'raises an error' do
       it 'with message' do
-        expect { raise WebexXmlApi::NotEnoughArguments, 'this message exactly'}.
-          to raise_error('this message exactly')
+        expect { raise WebexXmlApi::NotEnoughArguments, 'this message exactly' }
+          .to raise_error('this message exactly')
       end
     end
   end
@@ -43,8 +43,8 @@ describe WebexXmlApi::Error do
       end
 
       it 'returns a response object and error message' do
-        expect { raise WebexXmlApi::RequestFailed.new(@resp), 'this message' }.
-          to raise_error { |error| 
+        expect { raise WebexXmlApi::RequestFailed.new(@resp), 'this message' }
+          .to raise_error { |error|
             expect(error.message).to eql('this message')
             expect(error.response).to eql(@resp)
           }

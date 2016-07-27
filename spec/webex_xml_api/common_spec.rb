@@ -12,8 +12,8 @@ describe WebexXmlApi::Common do
       end
 
       it 'returns string with path' do
-        expect(subject.underscore('WebexXmlApi::Common')).
-          to eql('webex_xml_api/common')
+        expect(subject.underscore('WebexXmlApi::Common'))
+          .to eql('webex_xml_api/common')
       end
 
       it 'returns string with dash changed to underscore' do
@@ -25,8 +25,8 @@ describe WebexXmlApi::Common do
       subject { class_with_inclusion.new }
 
       it 'returns WebEx XML Service URL' do
-        expect(subject.xml_service_url('testsite')).
-          to eql('https://testsite.webex.com/WBXService/XMLService')
+        expect(subject.xml_service_url('testsite'))
+          .to eql('https://testsite.webex.com/WBXService/XMLService')
       end
     end
   end
