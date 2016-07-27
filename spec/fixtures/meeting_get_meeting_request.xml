@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message xmlns:serv="http://www.webex.com/schemas/2002/06/service" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.webex.com/schemas/2002/06/service"><header>
+  <securityContext>
+    <webExID>123456</webExID>
+    <password>test</password>
+    <siteName>test</siteName>
+  </securityContext>
+</header>
+<body><bodyContent xsi:type="java:com.webex.service.binding.meeting.GetMeeting"><meetingKey>123456789</meetingKey></bodyContent></body></message>
