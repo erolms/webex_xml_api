@@ -1,4 +1,5 @@
 require 'httparty'
+require 'nokogiri'
 require 'webex_xml_api/common'
 require 'webex_xml_api/exceptions'
 require 'webex_xml_api/security_context'

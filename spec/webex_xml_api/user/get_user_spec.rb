@@ -68,7 +68,7 @@ describe WebexXmlApi::User::GetUser do
         }
     end
 
-    it 'returns Request bodyContent as hash' do
+    it 'returns Response bodyContent as hash' do
       gu = subject.new(site_name: 'test', webex_id: 'test', password: 'test')
       good_reply = file_fixture('user_get_user_response_good.xml')
       stub_request(:post, 'https://test.webex.com/WBXService/XMLService')

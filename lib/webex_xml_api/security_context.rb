@@ -1,5 +1,3 @@
-require 'nokogiri'
-
 module WebexXmlApi
   class SecurityContext
     PARAMETER_MAPPING = {
@@ -28,7 +26,7 @@ module WebexXmlApi
         xml.header do
           xml.securityContext do
             PARAMETER_MAPPING.each_pair do |k, v|
-              xml.send(v, send(k.to_s)) if send(k.to_s)
+              xml.send(v, send(k)) if send(k)
             end
           end
         end
