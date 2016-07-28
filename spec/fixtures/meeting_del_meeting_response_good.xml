@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+Date: Thu, 28 Jul 2016 08:09:03 GMT
+Server: 
+Pragma: no-cache
+Cache-Control: no-cache
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Content-Type: text/xml;charset=UTF-8
+Strict-Transport-Security: max-age=31536000; includeSubDomains;preload
+Transfer-Encoding: chunked
+
+<?xml version="1.0" encoding="UTF-8"?>
+<serv:message xmlns:serv="http://www.webex.com/schemas/2002/06/service" xmlns:com="http://www.webex.com/schemas/2002/06/common" xmlns:meet="http://www.webex.com/schemas/2002/06/service/meeting" xmlns:att="http://www.webex.com/schemas/2002/06/service/attendee"><serv:header><serv:response><serv:result>SUCCESS</serv:result><serv:gsbStatus>PRIMARY</serv:gsbStatus></serv:response></serv:header><serv:body><serv:bodyContent xsi:type="meet:delMeetingResponse" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><meet:iCalendarURL><serv:host>https://test.webex.com/test/j.php?ED=123456789&amp;UID=123456789&amp;LD=9&amp;RD=8&amp;ST=1&amp;CN=54:65:73:74:2D:4D:65:65:74:69:6E:67:20:76:69:61:20:58:4D:4C:20:41:50:49&amp;STI=2016-07-20-15-30-00&amp;ETI=2016-07-20-16-00-00&amp;TD=25&amp;ICS=CMC</serv:host><serv:attendee>https://test.webex.com/test/j.php?ED=123456789&amp;UID=123456789&amp;LD=9&amp;RD=8&amp;ST=1&amp;CN=54:65:73:74:2D:4D:65:65:74:69:6E:67:20:76:69:61:20:58:4D:4C:20:41:50:49&amp;STI=2016-07-20-15-30-00&amp;ETI=2016-07-20-16-00-00&amp;TD=25&amp;ICS=MC</serv:attendee></meet:iCalendarURL></serv:bodyContent></serv:body></serv:message>
