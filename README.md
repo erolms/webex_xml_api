@@ -38,7 +38,35 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+WebEx XML API requires you to provide the WebEx Login credentials in some way. Following are required parameters for successful authentication agains WebEx:
+
+1. **site_name** (Your Site Name - easily identified in the webex.com URL)
+2. **webex_id** 
+3. **password** or **session_ticket**
+
+To create a WebEx Meeting you need to use **WebexXmlApi::Meeting::CreateMeeting** Service call. Here's an example (output from the console):
+
+```ruby
+  sm = WebexXmlApi::Meeting::CreateMeeting.new(site_name: 'test', webex_id: 'username', password: 'password')
+  => #<WebexXmlApi::Meeting::CreateMeeting:0x007ff2f99f0a30 @security_context=#<WebexXmlApi::SecurityContext:0x0... (output cut for brevity)
+  sm.conf_name = 'Name of the Telephone Conference'
+  => "Name of the Telephone Conference"
+  sm.agenda = 'Meeting Agenda'
+  => "Meeting Agenda"
+  sm.start_date = '07/29/2016 15:00:00'   # note the MM/DD/YYYY HH:MM:SS format, or provide a DateTime object
+  => "07/29/2016 15:00:00"
+  sm.duration = '30'      # in Minutes
+  => "30"
+  sm.open_time = '900'    # time before the start in seconds where participants can join the meeting
+  sm.send_request
+  => {"meetingkey"=>"123456789", "iCalendarURL"=>{"host"=>"https://test.webex.com/test/j.php?MTID=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "attendee"=>"https://test.webex.com/test/j.php?MTID=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"}, "guestToken"=>"cccccccccccccccccccccccccccccccc", "type"=>"meet:createMeetingResponse"}
+```
+
+This will create a very basic meeting for you.
+
+Using the **meetingkey** you can retrieve further details of your Meeting (**WebexXmlApi::Meeting::GetMeeting**), get URL for joining the meeting (**WebexXmlApi::Meeting::GetjoinurlMeeting**) or delete it (**WebexXmlApi::Meeting::DelMeeting**).
+
+Further usage details can be found in [Wiki Site](https://github.com/erolms/webex_xml_api/wiki) here at GitHub or in the gem documentation.
 
 ## Development
 
