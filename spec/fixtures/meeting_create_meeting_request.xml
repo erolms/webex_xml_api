@@ -6,4 +6,4 @@
     <siteName>test</siteName>
   </securityContext>
 </header>
-<body><bodyContent xsi:type="java:com.webex.service.binding.meeting.GetMeeting"><meetingKey>123456789</meetingKey></bodyContent></body></serv:message>
+<body><bodyContent xsi:type="java:com.webex.service.binding.meeting.CreateMeeting"><metaData><confName>Test-Meeting via XML API</confName></metaData><schedule><startDate>07/30/2016 15:00:00</startDate><duration>60</duration></schedule></bodyContent></body></serv:message>
