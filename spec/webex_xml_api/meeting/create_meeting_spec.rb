@@ -109,6 +109,7 @@ describe WebexXmlApi::Meeting::CreateMeeting do
       expect(sm.is_mp_audio = 'tst').to eql(sm.is_mp_audio)
       expect(sm.enable_chat = 'tst').to eql(sm.enable_chat)
       expect(sm.enable_audio_video = 'tst').to eql(sm.enable_audio_video)
+      expect(sm.enable_attendee_list = 'tst').to eql(sm.enable_attendee_list)
     end
   end
 
