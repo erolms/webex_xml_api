@@ -48,16 +48,11 @@ To create a WebEx Meeting you need to use **WebexXmlApi::Meeting::CreateMeeting*
 
 ```ruby
   sm = WebexXmlApi::Meeting::CreateMeeting.new(site_name: 'test', webex_id: 'username', password: 'password')
-  => #<WebexXmlApi::Meeting::CreateMeeting:0x007ff2f99f0a30 @security_context=#<WebexXmlApi::SecurityContext:0x0... (output cut for brevity)
-  sm.conf_name = 'Name of the Telephone Conference'
-  => "Name of the Telephone Conference"
-  sm.agenda = 'Meeting Agenda'
-  => "Meeting Agenda"
-  sm.start_date = '07/29/2016 15:00:00'   # note the MM/DD/YYYY HH:MM:SS format, or provide a DateTime object
-  => "07/29/2016 15:00:00"
-  sm.duration = '30'      # in Minutes
-  => "30"
-  sm.open_time = '900'    # time before the start in seconds where participants can join the meeting
+  sm.conf_name = 'Name of the Telephone Conference' # REQUIRED: set the name of your conference
+  sm.agenda = 'Meeting Agenda'            # OPTIONAL: set the agenda
+  sm.start_date = '07/29/2016 15:00:00'   # REQUIRED: start time; note the MM/DD/YYYY HH:MM:SS format, or provide a DateTime object
+  sm.duration = '30'                      # REQUIRED: duration in Minutes
+  sm.open_time = '900'                    # OPTIONAL: time before the start in seconds where participants can join the meeting
   sm.send_request
   => {"meetingkey"=>"123456789", "iCalendarURL"=>{"host"=>"https://test.webex.com/test/j.php?MTID=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "attendee"=>"https://test.webex.com/test/j.php?MTID=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"}, "guestToken"=>"cccccccccccccccccccccccccccccccc", "type"=>"meet:createMeetingResponse"}
 ```
@@ -65,6 +60,11 @@ To create a WebEx Meeting you need to use **WebexXmlApi::Meeting::CreateMeeting*
 This will create a very basic meeting for you.
 
 Using the **meetingkey** you can retrieve further details of your Meeting (**WebexXmlApi::Meeting::GetMeeting**), get URL for joining the meeting (**WebexXmlApi::Meeting::GetjoinurlMeeting**) or delete it (**WebexXmlApi::Meeting::DelMeeting**).
+
+WebexXmlApi is throwing Exceptions, make sure you implement `begin..rescue` blocks. Following Exceptions are being raised:
+
+* **NotEnoughArguments** - API Method is missing parameters required to fulfill the WebEx request
+* **RequestFailed** - Raised if WebEx API Interface returns an error. The error message sent by the WebEx can be retrieved from the message property and entire response object for debugging purposes is stored in the response propery.
 
 Further usage details can be found in [Wiki Site](https://github.com/erolms/webex_xml_api/wiki) here at GitHub or in the gem documentation.
 
@@ -86,7 +86,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/erolms
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the [MIT License](https://raw.githubusercontent.com/erolms/webex_xml_api/master/LICENSE.txt).
 
 ## Copyrights
 

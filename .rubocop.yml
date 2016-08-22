@@ -3,9 +3,6 @@ AllCops:
     - 'bin/**/*'
     - 'webex_xml_api.gemspec'
 
-Documentation:
-  Enabled: false
-
 Metrics/AbcSize:
   Enabled: false
 
