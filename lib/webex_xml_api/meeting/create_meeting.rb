@@ -214,6 +214,16 @@ module WebexXmlApi
         @meeting['enableOptions']['audioVideo'] = str
       end
 
+      # The +enable_attendee_list+ getter
+      def enable_attendee_list
+        @meeting['enableOptions']['attendeeList']
+      end
+
+      # The +enable_attendee_list+ setter
+      def enable_attendee_list=(str)
+        @meeting['enableOptions']['attendeeList'] = str
+      end
+
       private
 
       def init_meeting_object
